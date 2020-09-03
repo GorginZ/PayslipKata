@@ -10,13 +10,13 @@ namespace PayslipKata
         public string NetIncome { get; set; }
         public string Super { get; set; }
 //constructor
-        public Payslip() {
-          Name = name;
-          PayPeriod = payPeriod;
-          GrossIncome = grossIncome;
-          IncomeTax = incomeTax;
-          NetIncome = netIncome;
-          Super = super;
-        }
+        // public Payslip() {
+        //   Name = name;
+        //   PayPeriod = payPeriod;
+        //   GrossIncome = grossIncome;
+        //   IncomeTax = incomeTax;
+        //   NetIncome = netIncome;
+        //   Super = super;
+        // }
     }
 }

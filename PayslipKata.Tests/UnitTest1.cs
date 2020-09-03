@@ -8,15 +8,16 @@ namespace PayslipKata.Tests
         [Fact]
         public void Payslip()
         { //arrange
-          var payslip = new Payslip();
-          //act
+          // var payslip = new Payslip();
+          // //act
 
-          // payslip.test the functions that will generate the payslip.
+          // // payslip.test the functions that will generate the payslip.
 
-          //assert
-          var expectedPayslip = new Payslip{Name = "Name Name", PayPeriod =  }
+          // //assert
+          // var expectedPayslip = new Payslip{Name = "Name Name", PayPeriod =  }
                             
-           Assert.Equal(expectedPayslip, payslip"); 
+          //  Assert.Equal(expectedPayslip, payslip"); 
+        }
           
         }
 }
