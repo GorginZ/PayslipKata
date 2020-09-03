@@ -12,11 +12,11 @@ namespace PayslipKata
     public string PaymentStart { get; set; }
     public string PaymentEnd { get; set; }
     //constructor
-    public UserInput()
+    public UserInput(firstName, surName, annualSalary, superRate, paymentStart, paymentEnd)
     {
         FirstName = firstName;
-         Surname = surname;
-         AnnualSalary = annualSalary;
+         SurName = surName;
+         AnnualSalary = sannualSalary;
          SuperRate = superRate;
          PaymentStart = paymentStart;
          PaymentEnd = paymentEnd;
