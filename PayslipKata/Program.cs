@@ -7,6 +7,7 @@ namespace PayslipKata
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            var userInput = new UserInput();
         }
     }
 }

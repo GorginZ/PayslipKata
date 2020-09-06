@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 namespace PayslipKata
@@ -29,16 +30,24 @@ namespace PayslipKata
     [Required]
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")] 
     public string PaymentEnd { get; set; }
-    //constructor
-    public UserInput(string firstName, string surName, string annualSalary, string superRate, string paymentStart, string paymentEnd)
-    {
-      FirstName = GetFirstName();
-      SurName = GetSurName();
-      AnnualSalary = GetAnnualSalary();
-      SuperRate = GetSuperRate();
-      PaymentStart = GetPaymentStart();
-      PaymentEnd = GetPaymentEnd();
-    }
+    // //constructor
+    // public UserInput(string firstName, string surName, string annualSalary, string superRate, string paymentStart, string paymentEnd)    {
+    //   FirstName = firstName;
+    //   SurName = surName;
+    //   AnnualSalary = annualSalary;
+    //   SuperRate = superRate;
+    //   PaymentStart = paymentStart;
+    //   PaymentEnd = paymentEnd;
+    // }
+
+public UserInput UserInputFactory()
+{
+  var userInput = new UserInput();
+  var context = new ValidationContext(userInput);
+  userInput.FirstName = GetFirstName();
+  userInput.FirstName = TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", context);
+  return userInput;
+}
 
     public string GetFirstName()
     {
@@ -79,6 +88,34 @@ namespace PayslipKata
       Console.WriteLine("Please enter the payment end date");
       var paymentEnd = Console.ReadLine();
       return paymentEnd;
+    }
+
+
+
+
+     public static string TryValidatePropertyAndRepromptIfInvalid(string value, string propertyName, ValidationContext context)
+    {
+      context.MemberName = propertyName;
+
+      var result = new List<ValidationResult>();
+      var isValidProp = Validator.TryValidateProperty(value, context, result);
+
+      while (!isValidProp)
+      {
+        foreach (var validation in result)
+        {
+          Console.WriteLine(validation.ErrorMessage);
+        }
+
+        Console.WriteLine("Please enter a valid entry for this field");
+
+        value = Console.ReadLine();
+        result = new List<ValidationResult>();
+        isValidProp = Validator.TryValidateProperty(value, context, result);
+      }
+      Console.WriteLine($"OK..{value}");
+
+      return value;
     }
 
   }
