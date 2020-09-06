@@ -18,10 +18,10 @@ namespace PayslipKata
     public string SurName { get; set; }
 
     [Required]
-    [RegularExpression("[0-9]", ErrorMessage = "Annual Salary must include numbers only")]
+    // [RegularExpression("[^a-zA-Z]{10}", ErrorMessage = "Annual Salary must include numbers only")]
     public string AnnualSalary { get; set; }
     [Required]
-    [RegularExpression("[0-9]", ErrorMessage = "Your super rate must include numbers only")]
+    // [RegularExpression("[0-9]", ErrorMessage = "Your super rate must include numbers only")]
     public string SuperRate { get; set; }
 
     [Required]
@@ -30,6 +30,8 @@ namespace PayslipKata
     [Required]
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")] 
     public string PaymentEnd { get; set; }
+
+    
     // //constructor
     // public UserInput(string firstName, string surName, string annualSalary, string superRate, string paymentStart, string paymentEnd)    {
     //   FirstName = firstName;
