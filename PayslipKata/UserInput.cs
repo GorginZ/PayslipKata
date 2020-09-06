@@ -24,6 +24,7 @@ namespace PayslipKata
     // [RegularExpression("[0-9]", ErrorMessage = "Your super rate must include numbers only")]
     public string SuperRate { get; set; }
 
+ //would use enums here but kata specifies payment start and end as seperate entries.
     [Required]
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")]
     public string PaymentStart { get; set; }
@@ -31,7 +32,7 @@ namespace PayslipKata
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")] 
     public string PaymentEnd { get; set; }
 
-    
+
     // //constructor
     // public UserInput(string firstName, string surName, string annualSalary, string superRate, string paymentStart, string paymentEnd)    {
     //   FirstName = firstName;
@@ -78,7 +79,6 @@ namespace PayslipKata
       var superRate = Console.ReadLine();
       return superRate;
     }
-
     public string GetPaymentStart()
     {
       Console.WriteLine("Please enter the payment start date:");
