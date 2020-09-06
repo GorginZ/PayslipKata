@@ -7,7 +7,7 @@ namespace PayslipKata
   public class UserInput
   {
     //all user input is strings, can perform validation here on UserInput properties and easily re-prompt
-    [Required(ErrorMessage = "First Name Required")]
+    [Required(ErrorMessage = "We need your first name")]
     [MaxLength(15, ErrorMessage = "First Name should not more than 1`5 character")]
     [MinLength(3, ErrorMessage = "First Name should be more than 2 characters")]
     public string FirstName { get; set; }
@@ -39,15 +39,16 @@ namespace PayslipKata
     //   PaymentStart = paymentStart;
     //   PaymentEnd = paymentEnd;
     // }
+    
 
-public UserInput UserInputFactory()
-{
-  var userInput = new UserInput();
-  var context = new ValidationContext(userInput);
-  userInput.FirstName = GetFirstName();
-  userInput.FirstName = TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", context);
-  return userInput;
-}
+// public UserInput UserInputFactory()
+// {
+//   var userInput = new UserInput();
+//   var context = new ValidationContext(userInput);
+//   userInput.FirstName = GetFirstName();
+//   userInput.FirstName = TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", context);
+//   return userInput;
+// }
 
     public string GetFirstName()
     {
