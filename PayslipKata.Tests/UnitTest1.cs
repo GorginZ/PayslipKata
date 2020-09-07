@@ -18,6 +18,11 @@ namespace PayslipKata.Tests
                             
           //  Assert.Equal(expectedPayslip, payslip"); 
         }
-          
+         [Fact]
+         public void IncomeTaxFromAnnualIncome() 
+         {
+           double annualIncome = 60050;
+           
+         } 
         }
 }

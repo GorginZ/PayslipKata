@@ -11,14 +11,6 @@ namespace PayslipKata
       Console.WriteLine("Welcome to payslip generator");
       var userInput = new UserInput();
 
-    //   FirstName = firstName;
-    //   SurName = surName;
-    //   AnnualSalary = annualSalary;
-    //   SuperRate = superRate;
-    //   PaymentStart = paymentStart;
-    //   PaymentEnd = paymentEnd;
-    // }
-
       var firstNameContext = new ValidationContext(userInput);
       userInput.FirstName = userInput.GetFirstName();
       userInput.FirstName = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", firstNameContext);
@@ -42,9 +34,14 @@ namespace PayslipKata
        var paymentEndContext = new ValidationContext(userInput);
       userInput.PaymentEnd = userInput.GetPaymentEnd();
       userInput.PaymentEnd = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.PaymentEnd, "PaymentEnd", paymentEndContext);
+var tax = new Tax()
+var payee = new Payee(userInput);
 
+      var payslip = new Payslip();
+      payslip.Name = Payslip.FullName(userInput.FirstName, userInput.SurName);
+      payslip.PayPeriod = Payslip.PayslipPayPeriod(userInput.PaymentStart, userInput.PaymentEnd);
 
-
+     
 
 
 

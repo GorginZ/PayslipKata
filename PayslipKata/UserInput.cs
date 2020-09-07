@@ -7,6 +7,8 @@ namespace PayslipKata
   public class UserInput
   {
     //all user input is strings, can perform validation here on UserInput properties and easily re-prompt
+
+    //TYPES 
     [Required(ErrorMessage = "We need your first name")]
     [MaxLength(15, ErrorMessage = "First Name should not more than 1`5 character")]
     [MinLength(3, ErrorMessage = "First Name should be more than 2 characters")]
