@@ -26,8 +26,8 @@ namespace PayslipKata
       PaymentEnd = userInput.PaymentEnd;
 
       Grossincome = PayslipGrossIncome(userInput.AnnualSalary);
-      IncomeTax = ;
-      NetIncome = CalcPayslipNetIncome(Grossincome, incomeTax);
+      // IncomeTax = Tax.Calc;
+      // NetIncome = CalcPayslipNetIncome(Grossincome, incomeTax);
     
     }
 
