@@ -19,15 +19,68 @@ namespace PayslipKata
 
 //tax class so any changes can all happen here, no magic numbers, any logic for tax can reference this class.
 
-    public class IncomeTax
+    public class Tax
     {
       //list
-     public int[] TaxBracketA = {0, 18200};
-     public int[] TaxBracketB = {18201, 37000};
-     public int[] TaxBracketC = {37001, 87000};
 
-    public int [] TaxBracketD = {87001, 180000};
+    //  public double[] TaxBracketA = {0, 18200};
+    //  public double[] TaxBracketB = {18201, 37000};
+    //  public double[] TaxBracketC = {37001, 87000};
 
-    public int [] TaxbracketE = {180, 001};
+    // public double [] TaxBracketD = {87001, 180000};
+
+    // public double [] TaxbracketE = {180, 001};
+    public double AnnualIncome { get; set; }
+
+    public double IncomeTax { get; set; }
+
+    public double TaxBracketAMin = 0;
+    public double TaxBracketAMax = 18200;
+    public double TaxBracketABase = 0;
+    public double TaxBracketAMultiplier = 0;
+    
+
+    public double TaxBracketBMin = 18201;
+    public double TaxBracketBMax = 37000;
+    public double TaxBracketBBase = 0;
+    public double TaxBracketBMultiplier = 0.19;
+
+    public double TaxBracketCMin = 37001;
+    public double TaxBracketCMax = 87000;
+    public double TaxBracketCBase = 3572;
+    public double TaxBracketCMultiplier = 0.325;
+
+    public double TaxBracketDMin = 87001;
+    public double TaxBracketDMax = 180000;
+    public double TaxBracketDBase = 19822; 
+    public double TaxBracketDMultiplier = 0.37;
+
+    public double TaxBracketE = 180001;
+    public double TaxBracketEBase = 54232;
+    public double TaxBracketEMultiplier = 0.45;
+    
+
+      public double CalcIncomeTax(double annualIncome) 
+      {
+         
+        if (annualIncome > 0 && annualIncome < 18200)
+        {
+
+          return (TaxBracketAMin + TaxbracketAMax);
+        }
+        else if (annualIncome > 18201 && annualIncome < 37000)
+        {
+          return 4;
+        }
+        //taxbracketC
+        else if (annualIncome > TaxBracketCMin && annualIncome < TaxBracketCMax)
+        {
+          //     income tax = (3,572 + (60,050 - 37,000) x 0.325) / 12 = 921.9375 (round up) = 922
+           return (TaxBracketCBase + (annualIncome - TaxBracketBMax) * TaxBracketCMultiplier / 12);
+        }
+        else {
+          return 4; //error here
+        }
+      }
     }
 }
