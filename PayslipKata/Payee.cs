@@ -44,7 +44,7 @@ namespace PayslipKata
     //arrow function to concat entered payment periods in format expected in pay period field in payslip
     public static string PayslipPayPeriod(string PaymentStart, string PaymentEnd) => $"{PaymentStart}-{PaymentEnd}";
 
-     
+
 
     public static double PayslipGrossIncome(string annualIncome)
     {
@@ -61,8 +61,7 @@ namespace PayslipKata
 
     public double CalcSuper(double GrossIncome, double SuperRate)
     {
-      return GrossIncome * SuperRate;
-
+      return (GrossIncome * SuperRate) / 100;
     }
 
   }
