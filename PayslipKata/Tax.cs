@@ -52,11 +52,11 @@ namespace PayslipKata
         }
         else if (annualIncome > TaxBracketCMin && annualIncome < TaxBracketCMax)
         {
-           return (TaxBracketCBase + (annualIncome - TaxBracketBMax) * TaxBracketCMultiplier / 12);
+           return (TaxBracketCBase + (annualIncome - TaxBracketBMax) * TaxBracketCMultiplier) / 12;
         }
         else if (annualIncome > TaxBracketDMin && annualIncome < TaxBracketDMax)
         {
-          return (TaxBracketDBase + (annualIncome - TaxBracketCMax) * TaxBracketDMultiplier / 12);
+          return (TaxBracketDBase + (annualIncome - TaxBracketCMax) * TaxBracketDMultiplier) / 12;
         }
         else if (annualIncome > TaxBracketE)
         {
