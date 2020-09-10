@@ -31,6 +31,12 @@ namespace PayslipKata
     public double TaxBracketE = 180001;
     public double TaxBracketEBase = 54232;
     public double TaxBracketEMultiplier = 0.45;
+
+    public Tax(string annualIncome)
+    {
+      AnnualIncome = int.Parse(annualIncome);
+      IncomeTax = CalcIncomeTax(AnnualIncome);
+    }
     
 
       public double CalcIncomeTax(double annualIncome) 

@@ -1,3 +1,4 @@
+using System;
 namespace PayslipKata
 {
   public class Payslip
@@ -5,19 +6,24 @@ namespace PayslipKata
     //all types will be strings bc it's a payslip and the final product so nothing else needs to be manipulated and it must return strings.
     public string Name { get; set; }
     public string PayPeriod { get; set; }
-    public string GrossIncome { get; set; }
-    public string IncomeTax { get; set; }
-    public string NetIncome { get; set; }
-    public string Super { get; set; }
+    public double GrossIncome { get; set; }
+    public double IncomeTax { get; set; }
+    public double NetIncome { get; set; }
+    public double Super { get; set; }
     //constructor
-    // public Payslip() {
-    //   Name = FullName;
-    //   PayPeriod = payPeriod;
-    //   GrossIncome = grossIncome;
-    //   IncomeTax = incomeTax;
-    //   NetIncome = netIncome;
-    //   Super = super;
-    // }
+    public Payslip(string name, string payPeriod, double grossIncome, double incomeTax, double netIncome, double super) {
+      Name = name;
+      PayPeriod = payPeriod;
+      GrossIncome = grossIncome;
+      IncomeTax = incomeTax;
+      NetIncome = netIncome;
+      Super = super;
+    }
+
+    public void PrintPayslip(Payslip Payslip)
+    {
+      Console.WriteLine($"Name {Payslip.Name} \nPay Period: {Payslip.PayPeriod}\n Gross Income: {Payslip.GrossIncome} \n Income Tax: {Payslip.IncomeTax} \n Net Income: {Payslip.NetIncome} \n Super: {Payslip.Super}" );
+    }
 
     // public Payslip(UserInput userInput)
     // {
@@ -30,11 +36,6 @@ namespace PayslipKata
 
 
     //function to concat first and last name for expected 'name' field in payslip 
-    public static string FullName(string FirstName, string SurName) => $"{FirstName} {SurName}";
-    //arrow function to concat entered payment periods in format expected in pay period field in payslip
-    public static string PayslipPayPeriod(string PaymentStart, string PaymentEnd) => $"{PaymentStart}-{PaymentEnd}";
-
-     
 
  
 
