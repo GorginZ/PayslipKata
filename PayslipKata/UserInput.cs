@@ -6,9 +6,6 @@ namespace PayslipKata
 {
   public class UserInput
   {
-    //all user input is strings, can perform validation here on UserInput properties and easily re-prompt
-
-    //TYPES 
     [Required(ErrorMessage = "We need your first name")]
     [MaxLength(15, ErrorMessage = "First Name should not more than 1`5 character")]
     [MinLength(3, ErrorMessage = "First Name should be more than 2 characters")]
@@ -26,7 +23,7 @@ namespace PayslipKata
     // [RegularExpression("[0-9]", ErrorMessage = "Your super rate must include numbers only")]
     public string SuperRate { get; set; }
 
- //would use enums here but kata specifies payment start and end as seperate entries.
+    //would use enums here but kata specifies payment start and end as seperate entries.
     [Required]
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")]
     public string PaymentStart { get; set; }
@@ -34,26 +31,37 @@ namespace PayslipKata
     // [RegularExpression("^[0-9]+$", ErrorMessage = "Your work start your should only include numbers")] 
     public string PaymentEnd { get; set; }
 
+    public static UserInput GetUserInput()
+    {
+      var userInput = new UserInput();
 
-    // //constructor
-    // public UserInput(string firstName, string surName, string annualSalary, string superRate, string paymentStart, string paymentEnd)    {
-    //   FirstName = firstName;
-    //   SurName = surName;
-    //   AnnualSalary = annualSalary;
-    //   SuperRate = superRate;
-    //   PaymentStart = paymentStart;
-    //   PaymentEnd = paymentEnd;
-    // }
-    
+      var firstNameContext = new ValidationContext(userInput);
+      userInput.FirstName = userInput.GetFirstName();
+      userInput.FirstName = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", firstNameContext);
 
-// public UserInput UserInputFactory()
-// {
-//   var userInput = new UserInput();
-//   var context = new ValidationContext(userInput);
-//   userInput.FirstName = GetFirstName();
-//   userInput.FirstName = TryValidatePropertyAndRepromptIfInvalid(userInput.FirstName, "FirstName", context);
-//   return userInput;
-// }
+      var surNameContext = new ValidationContext(userInput);
+      userInput.SurName = userInput.GetSurName();
+      userInput.SurName = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.SurName, "SurName", surNameContext);
+
+      var annualSalaryContext = new ValidationContext(userInput);
+      userInput.AnnualSalary = userInput.GetAnnualSalary();
+      userInput.AnnualSalary = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.AnnualSalary, "AnnualSalary", annualSalaryContext);
+
+      var superRateContext = new ValidationContext(userInput);
+      userInput.SuperRate = userInput.GetSuperRate();
+      userInput.SuperRate = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.SuperRate, "SuperRate", superRateContext);
+
+      var paymentStartContext = new ValidationContext(userInput);
+      userInput.PaymentStart = userInput.GetPaymentStart();
+      userInput.PaymentStart = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.PaymentStart, "PaymentStart", paymentStartContext);
+
+      var paymentEndContext = new ValidationContext(userInput);
+      userInput.PaymentEnd = userInput.GetPaymentEnd();
+      userInput.PaymentEnd = UserInput.TryValidatePropertyAndRepromptIfInvalid(userInput.PaymentEnd, "PaymentEnd", paymentEndContext);
+
+      return userInput;
+
+    }
 
     public string GetFirstName()
     {
@@ -94,11 +102,7 @@ namespace PayslipKata
       var paymentEnd = Console.ReadLine();
       return paymentEnd;
     }
-
-
-
-
-     public static string TryValidatePropertyAndRepromptIfInvalid(string value, string propertyName, ValidationContext context)
+    public static string TryValidatePropertyAndRepromptIfInvalid(string value, string propertyName, ValidationContext context)
     {
       context.MemberName = propertyName;
 

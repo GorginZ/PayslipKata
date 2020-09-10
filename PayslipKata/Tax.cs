@@ -1,18 +1,15 @@
+using System;
 namespace PayslipKata
 {
 
     public class Tax
     {
     public double AnnualIncome { get; set; }
-
     public double IncomeTax { get; set; }
-
     public double TaxBracketAMin = 0;
     public double TaxBracketAMax = 18200;
     public double TaxBracketABase = 0;
     public double TaxBracketAMultiplier = 0;
-    
-
     public double TaxBracketBMin = 18201;
     public double TaxBracketBMax = 37000;
     public double TaxBracketBBase = 0;
@@ -62,9 +59,11 @@ namespace PayslipKata
         {
           return (TaxBracketEBase + (annualIncome - TaxBracketDMax) * TaxBracketEMultiplier / 12);
         }
-        else {
-          return 4; //error here
-        }
+     else 
+     {
+      //  catch ()
+      Console.WriteLine("try catch here");
+     }
       }
     }
 }

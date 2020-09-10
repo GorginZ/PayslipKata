@@ -25,5 +25,16 @@ namespace PayslipKata
       Console.WriteLine($" Name: {payslip.Name} \n Pay Period: {payslip.PayPeriod}\n Gross Income: {payslip.GrossIncome} \n Income Tax: {payslip.IncomeTax} \n Net Income: {payslip.NetIncome} \n Super: {payslip.Super}");
     }
 
+    public static void GeneratePayslip()
+    {
+      Console.WriteLine("Welcome to payslip generator");
+
+      var userInput = UserInput.GetUserInput();
+      var payee = new Payee(userInput);
+      var tax = new Tax(userInput.AnnualSalary);
+      var payslip = new Payslip(payee.Name, payee.PayPeriod, payee.GrossIncome, payee.IncomeTax, payee.NetIncome, payee.Super);
+      payslip.PrintPayslip(payslip);
+    }
+
   }
 }

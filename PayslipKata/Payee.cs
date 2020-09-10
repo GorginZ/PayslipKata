@@ -7,10 +7,7 @@ namespace PayslipKata
     public double AnnualSalary { get; set; }
     public double SuperRate { get; set; }
     public string PaymentStart { get; set; }
-
     public string PaymentEnd { get; set; }
-
-    // public string Name { get; set; }
     public string Name { get; set; }
     public string PayPeriod { get; set; }
     public double GrossIncome { get; set; }
@@ -39,29 +36,24 @@ namespace PayslipKata
 
     }
 
-
     public static string FullName(string FirstName, string SurName) => $"{FirstName} {SurName}";
-    //arrow function to concat entered payment periods in format expected in pay period field in payslip
+  
     public static string PayslipPayPeriod(string PaymentStart, string PaymentEnd) => $"{PaymentStart}-{PaymentEnd}";
-
-
 
     public static double PayslipGrossIncome(string annualIncome)
     {
       int intAnnualIncome = int.Parse(annualIncome);
-      int intGrossIncome = intAnnualIncome / 12;
-      // var grossIncome = intGrossIncome.ToString();
-      return intGrossIncome;
+      return intAnnualIncome / 12;
     }
     public static double CalcPayslipNetIncome(double grossIncome, double incomeTax)
     {
-      double netIncome = (grossIncome - incomeTax);
-      return netIncome;
+      return (grossIncome - incomeTax);
     }
 
     public double CalcSuper(double GrossIncome, double SuperRate)
     {
-      return (GrossIncome * SuperRate) / 100;
+     return (GrossIncome * SuperRate) / 100;
+  
     }
 
   }
