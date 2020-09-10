@@ -55,15 +55,12 @@ namespace PayslipKata
         {
           return (TaxBracketDBase + (annualIncome - TaxBracketCMax) * TaxBracketDMultiplier) / 12;
         }
-        else if (annualIncome > TaxBracketE)
+        else 
+        // (annualIncome > TaxBracketE)
         {
           return (TaxBracketEBase + (annualIncome - TaxBracketDMax) * TaxBracketEMultiplier / 12);
         }
-     else 
-     {
-      //  catch ()
-      Console.WriteLine("try catch here");
-     }
+   
       }
     }
 }
